@@ -1,0 +1,9 @@
+  legacy:
+    adapter: sqlite3
+    database: db/db1.sqlite3
+
+  old_db:
+    adapter: mysql2
+    host: localhost
+    database: contactdb
+    username: root

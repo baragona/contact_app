@@ -1,0 +1,54 @@
+
+  
+  
+  <p style='margin:30px'>
+
+Only the email column is required.<br/>
+The uploaded file cannot contain duplicate email addresses, this will show an error.<br/>
+The source_filename column in the DB will be automatically set to the file you upload.<br/>
+The update operation will either finish completely or do nothing and return an error message.<br/>
+Any columns present other than these will cause an error. Acceptable column names:<br/><br/>
+        email   (REQUIRED)        <br/>
+        status        <br/>
+        addr        <br/>
+        city        <br/>
+        district_doc_type        <br/>
+        email        <br/>
+        enrollment        <br/>
+        ext        <br/>
+        first_name        <br/>
+        last_name        <br/>
+        full_name        <br/>
+        grade        <br/>
+        low_grade        <br/>
+        high_grade        <br/>
+        honorific        <br/>
+        phone        <br/>
+        school_name        <br/>
+        state        <br/>
+        title        <br/>
+        school_type        <br/>
+        school_classification        <br/>
+        unused        <br/>
+        website        <br/>
+        zip        <br/>
+        source        <br/>
+        notes
+  </p>
+  
+  
+<%= form_tag({:action => 'insertContactsWithCSV', :controller => '/contacts'}, :multipart => true) do %>
+    <p><label for="upload_file">Select CSV File</label>
+    <%= file_field 'upload', 'datafile' %></p>
+    
+    <p style='margin:30px'>
+        What to do in case the new data matches email addresses already in the DB?
+        <select name='dupe_mode' style='margin:30px'>
+            <option value="throw_error" selected=1>Show an error and don't touch the database</option>
+            <option value="keep_new">Update the old row with new information</option>
+
+        </select>
+    </p>
+    
+    <%= submit_tag "Upload" %>
+<% end %>
